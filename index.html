@@ -1,119 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shawamikh 23</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
 height:100vh;
+overflow:hidden;
 display:flex;
-justify-content:center;
 align-items:center;
-background:#064d35;
-font-family:Arial;
+justify-content:center;
+background:#eaf5ef;
+font-family:'Montserrat',sans-serif;
 }
+
+.cloud{
+position:absolute;
+font-size:80px;
+color:white;
+opacity:.7;
+animation:move 20s linear infinite;
+}
+
+.cloud.one{
+top:10%;
+left:-100px;
+}
+
+.cloud.two{
+top:60%;
+left:-200px;
+animation-delay:5s;
+}
+
+@keyframes move{
+from{transform:translateX(-200px);}
+to{transform:translateX(120vw);}
+}
+
 
 .ticket{
-width:330px;
+width:90%;
+max-width:700px;
+height:330px;
 background:white;
 border-radius:20px;
-padding:25px;
-text-align:center;
-box-shadow:0 10px 30px #0005;
+display:flex;
+overflow:hidden;
+box-shadow:0 15px 40px #0003;
+position:relative;
 }
 
-.airline{
-color:#087a45;
-font-size:22px;
-font-weight:bold;
+
+.left{
+width:35%;
+background:#0b5d3b;
+color:white;
+padding:35px 25px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
+
+
+.left h1{
+font-size:25px;
+margin:0;
+}
+
+
+.right{
+width:65%;
+padding:30px;
+text-align:center;
+position:relative;
+}
+
 
 .line{
-border-top:2px dashed #087a45;
-margin:20px 0;
+border-top:2px dashed #0b5d3b;
+margin:15px 0;
 }
+
 
 .info{
-text-align:left;
-line-height:2;
+display:flex;
+justify-content:space-around;
+font-size:14px;
 }
 
-h1{
-color:#087a45;
+
+.destination{
+font-weight:800;
+font-size:25px;
+color:#0b5d3b;
 }
+
 
 .scratch{
-margin-top:20px;
-background:linear-gradient(45deg,#aaa,#eee,#999);
-height:80px;
-border-radius:15px;
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,#777,#ddd,#999);
 display:flex;
 align-items:center;
 justify-content:center;
+font-weight:800;
 color:white;
-font-size:20px;
-font-weight:bold;
 cursor:pointer;
+font-size:22px;
 }
 
-.hide{
+
+.hidden{
 display:none;
 }
 
+
+.plane{
+position:absolute;
+top:45%;
+left:-100px;
+font-size:35px;
+animation:fly 8s linear infinite;
+}
+
+@keyframes fly{
+from{left:-100px;}
+to{left:110%;}
+}
+
+
+.confetti{
+font-size:30px;
+animation:drop 2s infinite;
+}
+
+@keyframes drop{
+0%{transform:translateY(-20px);}
+100%{transform:translateY(20px);}
+}
+
 </style>
+
 </head>
 
 <body>
 
+<div class="cloud one">☁</div>
+<div class="cloud two">☁</div>
+
+<div class="plane">✈</div>
+
 <div class="ticket">
 
-<div class="airline">
-✈️ SHAWAMIKH 23 AIRLINES
+<div class="left">
+<h1>SHAWAMIKH 23</h1>
+<p>BOARDING PASS</p>
+</div>
+
+
+<div class="right">
+
+<div id="content">
+
+<h2>CONGRATULATIONS</h2>
+
+<p>YOUR NEXT DESTINATION</p>
+
+<div class="destination">
+FIFTH YEAR
 </div>
 
 <div class="line"></div>
 
 <div class="info">
-<b>PASSENGER:</b> Future Pharmacist<br>
-<b>FROM:</b> Fourth Year 📚<br>
-<b>TO:</b> Fifth Year 🎓<br>
-<b>STATUS:</b> Cleared for Boarding ✅
+<div>
+FROM<br>
+<b>FOURTH YEAR</b>
 </div>
 
-<div class="line"></div>
-
-<div id="message" class="hide">
-<h1>🎉 CONGRATULATIONS!</h1>
-
-<h2>
-✈️ NEXT DESTINATION:
-<br>
-FIFTH YEAR
-</h2>
-
-<p>
-"The journey continues..."
-</p>
-
-💚 Shawamikh 23
+<div>
+TO<br>
+<b>FIFTH YEAR</b>
+</div>
+</div>
 
 </div>
 
 <div class="scratch" onclick="reveal()">
-✨ SCRATCH TO REVEAL
+SCRATCH TO REVEAL
+</div>
+
 </div>
 
 </div>
 
 
 <script>
+
 function reveal(){
-document.getElementById("message").classList.remove("hide");
-document.querySelector(".scratch").style.display="none";
+document.querySelector(".scratch").classList.add("hidden");
+document.querySelector(".right").innerHTML +=
+'<div class="confetti">CONGRATULATIONS</div>';
 }
+
 </script>
+
 
 </body>
 </html>

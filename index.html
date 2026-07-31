@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shawamikh 23</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#064d35;
+font-family:Arial;
+}
+
+.ticket{
+width:330px;
+background:white;
+border-radius:20px;
+padding:25px;
+text-align:center;
+box-shadow:0 10px 30px #0005;
+}
+
+.airline{
+color:#087a45;
+font-size:22px;
+font-weight:bold;
+}
+
+.line{
+border-top:2px dashed #087a45;
+margin:20px 0;
+}
+
+.info{
+text-align:left;
+line-height:2;
+}
+
+h1{
+color:#087a45;
+}
+
+.scratch{
+margin-top:20px;
+background:linear-gradient(45deg,#aaa,#eee,#999);
+height:80px;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.hide{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="ticket">
+
+<div class="airline">
+✈️ SHAWAMIKH 23 AIRLINES
+</div>
+
+<div class="line"></div>
+
+<div class="info">
+<b>PASSENGER:</b> Future Pharmacist<br>
+<b>FROM:</b> Fourth Year 📚<br>
+<b>TO:</b> Fifth Year 🎓<br>
+<b>STATUS:</b> Cleared for Boarding ✅
+</div>
+
+<div class="line"></div>
+
+<div id="message" class="hide">
+<h1>🎉 CONGRATULATIONS!</h1>
+
+<h2>
+✈️ NEXT DESTINATION:
+<br>
+FIFTH YEAR
+</h2>
+
+<p>
+"The journey continues..."
+</p>
+
+💚 Shawamikh 23
+
+</div>
+
+<div class="scratch" onclick="reveal()">
+✨ SCRATCH TO REVEAL
+</div>
+
+</div>
+
+
+<script>
+function reveal(){
+document.getElementById("message").classList.remove("hide");
+document.querySelector(".scratch").style.display="none";
+}
+</script>
+
+</body>
+</html>

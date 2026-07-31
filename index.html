@@ -2,218 +2,609 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shawamikh 23</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-margin:0;
-height:100vh;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#eaf5ef;
-font-family:'Montserrat',sans-serif;
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    background:#f5f5f5;
+    font-family:'Montserrat',sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
+
+
+/* clouds */
 
 .cloud{
-position:absolute;
-font-size:80px;
-color:white;
-opacity:.7;
-animation:move 20s linear infinite;
+    position:absolute;
+    color:white;
+    opacity:.8;
+    font-size:80px;
 }
 
-.cloud.one{
-top:10%;
-left:-100px;
+.cloud1{
+    top:10%;
+    left:-150px;
+    animation:cloudMove 25s linear infinite;
 }
 
-.cloud.two{
-top:60%;
-left:-200px;
-animation-delay:5s;
+.cloud2{
+    top:65%;
+    left:-200px;
+    animation:cloudMove 30s linear infinite;
 }
 
-@keyframes move{
-from{transform:translateX(-200px);}
-to{transform:translateX(120vw);}
+
+@keyframes cloudMove{
+    from{
+        transform:translateX(-200px);
+    }
+    to{
+        transform:translateX(120vw);
+    }
 }
 
+
+
+/* ticket */
 
 .ticket{
-width:90%;
-max-width:700px;
-height:330px;
-background:white;
-border-radius:20px;
-display:flex;
-overflow:hidden;
-box-shadow:0 15px 40px #0003;
-position:relative;
+
+    width:90%;
+    max-width:750px;
+    height:330px;
+
+    background:white;
+
+    border-radius:25px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+
 }
 
 
-.left{
-width:35%;
-background:#0b5d3b;
-color:white;
-padding:35px 25px;
-display:flex;
-flex-direction:column;
-justify-content:center;
+/* left side */
+
+.side{
+
+    width:32%;
+
+    background:#075b3b;
+
+    color:white;
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
 }
 
 
-.left h1{
-font-size:25px;
-margin:0;
+.side h1{
+
+    font-size:28px;
+
+    margin:0;
+
 }
 
 
-.right{
-width:65%;
-padding:30px;
-text-align:center;
-position:relative;
+.side p{
+
+    letter-spacing:2px;
+
 }
 
 
-.line{
-border-top:2px dashed #0b5d3b;
-margin:15px 0;
+
+/* main */
+
+.main{
+
+    width:68%;
+
+    padding:35px;
+
+    text-align:center;
+
+    position:relative;
+
 }
 
 
-.info{
-display:flex;
-justify-content:space-around;
-font-size:14px;
+
+h2{
+
+    color:#075b3b;
+
+    font-size:26px;
+
+    margin-top:5px;
+
 }
+
 
 
 .destination{
-font-weight:800;
-font-size:25px;
-color:#0b5d3b;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#000;
+
+    margin:20px 0;
+
 }
 
+
+
+.line{
+
+    border-top:2px dashed #075b3b;
+
+    margin:15px 0;
+
+}
+
+
+
+.info{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    font-size:14px;
+
+}
+
+
+.info b{
+
+    color:#075b3b;
+
+}
+
+
+
+/* message hidden */
+
+.message{
+
+    opacity:0;
+
+    transform:translateY(10px);
+
+    transition:.8s;
+
+}
+
+
+.message.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+/* scratch layer */
 
 .scratch{
-position:absolute;
-inset:0;
-background:linear-gradient(135deg,#777,#ddd,#999);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800;
-color:white;
-cursor:pointer;
-font-size:22px;
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(135deg,#555,#ddd,#777);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    z-index:5;
+
 }
 
 
-.hidden{
-display:none;
+
+.scratch.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s;
+
 }
 
+
+
+/* plane */
 
 .plane{
-position:absolute;
-top:45%;
-left:-100px;
-font-size:35px;
-animation:fly 8s linear infinite;
+
+    position:absolute;
+
+    width:70px;
+
+    height:30px;
+
+    left:-100px;
+
+    top:45%;
+
+    opacity:0;
+
+    z-index:10;
+
 }
+
+
+.body{
+
+    position:absolute;
+
+    width:60px;
+
+    height:8px;
+
+    background:#075b3b;
+
+    border-radius:10px;
+
+    top:12px;
+
+}
+
+
+.wing{
+
+    position:absolute;
+
+    width:35px;
+
+    height:8px;
+
+    background:#075b3b;
+
+    transform:rotate(-25deg);
+
+    top:5px;
+
+    left:20px;
+
+}
+
+
+
+.tail{
+
+    position:absolute;
+
+    width:12px;
+
+    height:18px;
+
+    background:#075b3b;
+
+    left:0;
+
+    top:5px;
+
+}
+
+
+
+.plane.fly{
+
+    opacity:1;
+
+    animation:fly 3s forwards;
+
+}
+
 
 @keyframes fly{
-from{left:-100px;}
-to{left:110%;}
+
+    from{
+        left:-100px;
+    }
+
+    to{
+        left:110%;
+    }
+
 }
 
+
+
+/* confetti */
 
 .confetti{
-font-size:30px;
-animation:drop 2s infinite;
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
 }
 
-@keyframes drop{
-0%{transform:translateY(-20px);}
-100%{transform:translateY(20px);}
-}
 
 </style>
-
 </head>
+
 
 <body>
 
-<div class="cloud one">☁</div>
-<div class="cloud two">☁</div>
 
-<div class="plane">✈</div>
+<div class="cloud cloud1">☁</div>
+
+<div class="cloud cloud2">☁</div>
+
+
+<div class="plane" id="plane">
+
+<div class="body"></div>
+
+<div class="wing"></div>
+
+<div class="tail"></div>
+
+</div>
+
+
 
 <div class="ticket">
 
-<div class="left">
+
+<div class="side">
+
 <h1>SHAWAMIKH 23</h1>
+
 <p>BOARDING PASS</p>
+
 </div>
 
 
-<div class="right">
 
-<div id="content">
+<div class="main">
+
+
+<div class="message" id="message">
 
 <h2>CONGRATULATIONS</h2>
 
+
 <p>YOUR NEXT DESTINATION</p>
 
+
 <div class="destination">
+
 FIFTH YEAR
+
 </div>
+
 
 <div class="line"></div>
 
+
 <div class="info">
+
 <div>
+
 FROM<br>
+
 <b>FOURTH YEAR</b>
+
 </div>
+
 
 <div>
+
 TO<br>
+
 <b>FIFTH YEAR</b>
-</div>
-</div>
-
-</div>
-
-<div class="scratch" onclick="reveal()">
-SCRATCH TO REVEAL
-</div>
-
-</div>
 
 </div>
 
 
+</div>
+
+
+<br>
+
+
+<p>
+We survived the lectures, exams & deadlines.
+<br>
+Now, a new chapter begins.
+</p>
+
+
+</div>
+
+
+<div class="scratch" id="scratch">
+
+SCRATCH HERE
+
+</div>
+
+
+</div>
+
+
+</div>
 <script>
 
-function reveal(){
-document.querySelector(".scratch").classList.add("hidden");
-document.querySelector(".right").innerHTML +=
-'<div class="confetti">CONGRATULATIONS</div>';
+let scratch = document.getElementById("scratch");
+let message = document.getElementById("message");
+let plane = document.getElementById("plane");
+
+let scratchedArea = 0;
+let revealed = false;
+
+
+
+function createConfetti(){
+
+    let box = document.createElement("div");
+
+    box.className = "confetti";
+
+    for(let i=0;i<30;i++){
+
+        let piece = document.createElement("span");
+
+        piece.style.position="absolute";
+        piece.style.width="8px";
+        piece.style.height="8px";
+        piece.style.background=
+        i%2===0 ? "#075b3b" : "#000";
+
+        piece.style.left=
+        Math.random()*100+"%";
+
+        piece.style.top="-10px";
+
+        piece.style.transition="2s";
+
+        box.appendChild(piece);
+
+
+        setTimeout(()=>{
+
+            piece.style.top="100%";
+            piece.style.transform=
+            "rotate(360deg)";
+
+        },100);
+
+    }
+
+
+    document.querySelector(".main")
+    .appendChild(box);
+
+
+    setTimeout(()=>{
+
+        box.remove();
+
+    },3000);
+
 }
 
+
+
+
+function reveal(){
+
+    if(revealed) return;
+
+    revealed=true;
+
+
+    scratch.classList.add("hide");
+
+
+    message.classList.add("show");
+
+
+    plane.classList.add("fly");
+
+
+    createConfetti();
+
+
+}
+
+
+
+scratch.addEventListener(
+"pointermove",
+function(e){
+
+
+    if(e.buttons===1){
+
+
+        scratchedArea += 1;
+
+
+        if(scratchedArea > 35){
+
+            reveal();
+
+        }
+
+    }
+
+
+});
+
+
+
+scratch.addEventListener(
+"touchmove",
+function(){
+
+
+    scratchedArea += 1;
+
+
+    if(scratchedArea > 35){
+
+        reveal();
+
+    }
+
+
+});
+
+
+
 </script>
-
-
-</body>
-</html>
